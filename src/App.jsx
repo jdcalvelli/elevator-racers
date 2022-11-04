@@ -1,12 +1,23 @@
-import {Button, Center} from '@mantine/core';
+import {Center, MantineProvider, Stack} from '@mantine/core';
+
+import GuessingSection from "./components/GuessingSection.jsx";
+import ReportingSection from "./components/ReportingSection.jsx";
+import ChartGuessSection from "./components/ChartGuessSection.jsx";
+import ChartReportSection from "./components/ChartReportSection.jsx";
 
 function App() {
 
   return (
-      <Center>
-        <p>hello world</p>
-        <p>testing</p>
-      </Center>
+      <MantineProvider>
+          <Center>
+              <Stack>
+                  <GuessingSection />
+                  <ChartGuessSection />
+                  <ReportingSection />
+                  <ChartReportSection />
+              </Stack>
+          </Center>
+      </MantineProvider>
   )
 
 }
