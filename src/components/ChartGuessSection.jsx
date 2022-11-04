@@ -4,22 +4,48 @@ import {Paper} from "@mantine/core";
 import { Chart, registerables } from 'chart.js';
 Chart.register(...registerables);
 
-import {Bar} from "react-chartjs-2";
+import {Pie} from "react-chartjs-2";
 
-function ChartGuessSection() {
+function ChartGuessSection(props) {
+
+    const collateGuesses = (loadedData) => {
+        const outputArray = [0, 0, 0];
+
+        loadedData.forEach(item => {
+            switch (item.guessedWinner) {
+                case "Elevator 1":
+                    outputArray[0]++;
+                    break;
+                case "Elevator 2":
+                    outputArray[1]++;
+                    break;
+                case "Elevator 3":
+                    outputArray[2]++;
+                    break;
+            }
+        })
+
+        return outputArray;
+    }
 
     return (
         <Paper shadow={"xl"} p={"md"}>
-            <Bar
+            <Pie
                 data={{
                     labels: ['elevator 1', 'elevator 2', 'elevator 3'],
                     datasets:[{
                         label: 'guesses per elevator',
-                        data: [3, 4, 1],
+                        data: collateGuesses(props.loadedData),
+                        backgroundColor: [
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                        ]
                     }]
                 }}
                 height={400}
-                width={400}/>
+                width={400}
+            />
         </Paper>
     )
 }
