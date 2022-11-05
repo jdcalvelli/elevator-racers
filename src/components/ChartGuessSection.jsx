@@ -51,7 +51,7 @@ function ChartGuessSection(props) {
 
                 <Button
                     onClick={() => {
-                        props.setFlowOrder(2)
+                        props.setFlowOrder(3)
                     }}>
                     Tell us who actually won!
                 </Button>

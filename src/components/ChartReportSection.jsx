@@ -48,7 +48,12 @@ function ChartReportSection(props) {
                     height={400}
                     width={400}
                 />
-                <Button>Finish Up!</Button>
+                <Button
+                    onClick={() => {
+                        props.setFlowOrder(5)
+                    }}>
+                    Finish Up!
+                </Button>
             </Stack>
         </Paper>
     )
