@@ -1,4 +1,4 @@
-import {Center, MantineProvider, Stack} from '@mantine/core';
+import {Center, Container, MantineProvider, Stack} from '@mantine/core';
 
 import GuessingSection from "./components/GuessingSection.jsx";
 import ReportingSection from "./components/ReportingSection.jsx";
@@ -12,26 +12,55 @@ function App() {
 
     let [data, setData] = useState({isLoaded: false, dataObject: {}});
 
+    let [flowOrder, setFlowOrder] = useState(0)
+
+    let [updateId, setUpdateId] = useState(null)
+
     useEffect(() => {
         getData(setData);
-    }, []);
+    },);
 
   return (
       <MantineProvider>
           <Center>
-              <Stack>
-                  <GuessingSection />
-                  {data.isLoaded ?
-                      <ChartGuessSection loadedData={data.dataObject}/> :
-                      null
-                  }
-                  <ReportingSection />
-                  {data.isLoaded ?
-                      <ChartReportSection loadedData={data.dataObject}/> :
-                      null
-                  }
+              {flowOrder == 0 ?
+                  <GuessingSection
+                      setFlowOrder={setFlowOrder}
+                      setUpdateId={setUpdateId}
 
-              </Stack>
+                  /> :
+                  null
+              }
+
+              {flowOrder == 1 ?
+                  (data.isLoaded ?
+                      <ChartGuessSection
+                          setFlowOrder={setFlowOrder}
+                          loadedData={data.dataObject}
+                      /> :
+                      null
+                  ) :
+                  null
+              }
+
+              {flowOrder == 2 ?
+                  <ReportingSection
+                      setFlowOrder={setFlowOrder}
+                      updateId={updateId}
+                  /> :
+                  null
+              }
+
+              {flowOrder == 3 ?
+                  (data.isLoaded ?
+                      <ChartReportSection
+                          setFlowOrder={setFlowOrder}
+                          loadedData={data.dataObject}
+                      /> :
+                      null
+                  ) :
+                  null
+              }
           </Center>
       </MantineProvider>
   )

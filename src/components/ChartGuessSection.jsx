@@ -1,4 +1,4 @@
-import {Paper} from "@mantine/core";
+import {Button, Paper, Stack, Title} from "@mantine/core";
 
 //import chartjs core
 import { Chart, registerables } from 'chart.js';
@@ -29,23 +29,33 @@ function ChartGuessSection(props) {
     }
 
     return (
-        <Paper shadow={"xl"} p={"md"}>
-            <Pie
-                data={{
-                    labels: ['elevator 1', 'elevator 2', 'elevator 3'],
-                    datasets:[{
-                        label: 'guesses per elevator',
-                        data: collateGuesses(props.loadedData),
-                        backgroundColor: [
-                            'rgba(153, 102, 255, 0.2)',
-                            'rgba(75, 192, 192, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                        ]
-                    }]
-                }}
-                height={400}
-                width={400}
-            />
+        <Paper shadow={"xl"} p={"md"} style={{height: 500, width: 400}}>
+            <Stack>
+                <Title order={3} style={{textAlign: 'center'}}>Highest Guessed Winning Elevator</Title>
+                <Pie
+                    data={{
+                        labels: ['elevator 1', 'elevator 2', 'elevator 3'],
+                        datasets:[{
+                            label: 'guesses per elevator',
+                            data: collateGuesses(props.loadedData),
+                            backgroundColor: [
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                            ]
+                        }]
+                    }}
+                    height={400}
+                    width={400}
+                />
+
+                <Button
+                    onClick={() => {
+                        props.setFlowOrder(2)
+                    }}>
+                    report results!
+                </Button>
+            </Stack>
         </Paper>
     )
 }
