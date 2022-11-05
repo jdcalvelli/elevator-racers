@@ -1,12 +1,15 @@
-import {Center, Container, MantineProvider, Stack} from '@mantine/core';
+import {Center, Container, MantineProvider} from '@mantine/core';
 
 import GuessingSection from "./components/GuessingSection.jsx";
 import ReportingSection from "./components/ReportingSection.jsx";
 import ChartGuessSection from "./components/ChartGuessSection.jsx";
 import ChartReportSection from "./components/ChartReportSection.jsx";
 
-import {useEffect, useState} from "react";
 import getData from "./tasks/getData.js";
+
+import './style.css'
+
+import {useEffect, useState} from "react";
 
 function App() {
 
@@ -22,46 +25,54 @@ function App() {
 
   return (
       <MantineProvider>
-          <Center>
-              {flowOrder == 0 ?
-                  <GuessingSection
-                      setFlowOrder={setFlowOrder}
-                      setUpdateId={setUpdateId}
-
-                  /> :
-                  null
-              }
-
-              {flowOrder == 1 ?
-                  (data.isLoaded ?
-                      <ChartGuessSection
+          <Container
+              style={{
+                  height: '95vh',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+          }}>
+              <Center>
+                  {flowOrder == 0 ?
+                      <GuessingSection
                           setFlowOrder={setFlowOrder}
-                          loadedData={data.dataObject}
+                          setUpdateId={setUpdateId}
+
                       /> :
                       null
-                  ) :
-                  null
-              }
+                  }
 
-              {flowOrder == 2 ?
-                  <ReportingSection
-                      setFlowOrder={setFlowOrder}
-                      updateId={updateId}
-                  /> :
-                  null
-              }
+                  {flowOrder == 1 ?
+                      (data.isLoaded ?
+                              <ChartGuessSection
+                                  setFlowOrder={setFlowOrder}
+                                  loadedData={data.dataObject}
+                              /> :
+                              null
+                      ) :
+                      null
+                  }
 
-              {flowOrder == 3 ?
-                  (data.isLoaded ?
-                      <ChartReportSection
+                  {flowOrder == 2 ?
+                      <ReportingSection
                           setFlowOrder={setFlowOrder}
-                          loadedData={data.dataObject}
+                          updateId={updateId}
                       /> :
                       null
-                  ) :
-                  null
-              }
-          </Center>
+                  }
+
+                  {flowOrder == 3 ?
+                      (data.isLoaded ?
+                              <ChartReportSection
+                                  setFlowOrder={setFlowOrder}
+                                  loadedData={data.dataObject}
+                              /> :
+                              null
+                      ) :
+                      null
+                  }
+              </Center>
+          </Container>
       </MantineProvider>
   )
 

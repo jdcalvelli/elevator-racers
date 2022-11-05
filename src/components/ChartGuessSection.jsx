@@ -34,7 +34,7 @@ function ChartGuessSection(props) {
                 <Title order={3} style={{textAlign: 'center'}}>Highest Guessed Winning Elevator</Title>
                 <Pie
                     data={{
-                        labels: ['elevator 1', 'elevator 2', 'elevator 3'],
+                        labels: ['The Flash', 'Otis', 'Meatball'],
                         datasets:[{
                             label: 'guesses per elevator',
                             data: collateGuesses(props.loadedData),
@@ -53,7 +53,7 @@ function ChartGuessSection(props) {
                     onClick={() => {
                         props.setFlowOrder(2)
                     }}>
-                    report results!
+                    Tell us who actually won!
                 </Button>
             </Stack>
         </Paper>

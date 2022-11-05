@@ -8,7 +8,7 @@ import {Pie} from "react-chartjs-2";
 
 function ChartReportSection(props) {
 
-    const collateGuesses = (loadedData) => {
+    const collateActual = (loadedData) => {
         const outputArray = [0, 0, 0];
 
         loadedData.forEach(item => {
@@ -34,10 +34,10 @@ function ChartReportSection(props) {
                 <Title order={3} style={{textAlign: 'center'}}>Elevator With Most Reported Wins</Title>
                 <Pie
                     data={{
-                        labels: ['elevator 1', 'elevator 2', 'elevator 3'],
+                        labels: ['The Flash', 'Otis', 'Meatball'],
                         datasets:[{
                             label: 'actual report per elevator',
-                            data: collateGuesses(props.loadedData),
+                            data: collateActual(props.loadedData),
                             backgroundColor: [
                                 'rgba(153, 102, 255, 0.2)',
                                 'rgba(75, 192, 192, 0.2)',

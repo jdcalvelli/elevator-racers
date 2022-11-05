@@ -11,7 +11,7 @@ function ReportingSection(props) {
                         setActualData(props.updateId, "Elevator 1")
                         props.setFlowOrder(3)
                     }}>
-                    report elevator 1
+                    Report The Flash as the winner! (farthest left)
                 </Button>
 
                 <Button
@@ -19,7 +19,7 @@ function ReportingSection(props) {
                         setActualData(props.updateId, "Elevator 2")
                         props.setFlowOrder(3)
                     }}>
-                    report elevator 2
+                    Report Otis as the winner! (in the center)
                 </Button>
 
                 <Button
@@ -27,7 +27,7 @@ function ReportingSection(props) {
                         setActualData(props.updateId, "Elevator 3")
                         props.setFlowOrder(3)
                     }}>
-                    report elevator 3
+                    Report Meatball as the winner! (farthest right)
                 </Button>
             </Stack>
         </Paper>
